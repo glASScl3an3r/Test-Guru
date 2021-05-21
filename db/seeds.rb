@@ -1,18 +1,18 @@
-categories = Category.first_or_create!([
+categories = Category.create!([
   { title: 'pwn' },
   { title: 'reverse' },
   { title: 'forensics' },
   { title: 'история россии' }
 ])
 
-users = User.first_or_create!([
+users = User.create!([
   { name: 'Иван Владимирович' },
   { name: 'Владимир Иванович' },
   { name: "d'Amir" },
   { name: "' UNION SELECT * FROM users -- " }
 ])
 
-tests = Test.first_or_create!([
+tests = Test.create!([
   { title: '20й век в истории россии', category_id: categories[3].id, author_id: users[0].id },
   { title: 'sql injections', category_id: categories[0].id, author_id: users[3].id },
   { title: 'x86 buffer overflow', category_id: categories[0].id, author_id: users[0].id  },
@@ -20,7 +20,7 @@ tests = Test.first_or_create!([
   { title: 'wewe', category_id: categories[0].id, author_id: users[2].id }
 ])
 
-questions = Question.first_or_create!([
+questions = Question.create!([
   { text: 'Когда?', test_id: tests[0].id },
   { text: 'Где?', test_id: tests[0].id },
   { text: "' OR 1 = 1 -- ", test_id: tests[1].id },
@@ -33,7 +33,7 @@ questions = Question.first_or_create!([
   { text: 'question2 test4', test_id: tests[4].id }
 ])
 
-answers = Answer.first_or_create!([
+answers = Answer.create!([
   { text: 'там', question_id: questions[0].id, correct: true },
   { text: 'не там', question_id: questions[0].id },
   { text: 'вооон там', question_id: questions[0].id },
@@ -57,7 +57,7 @@ answers = Answer.first_or_create!([
   { text: 'answer2 q9', question_id: questions[9].id },
 ])
 
-passed_tests = PassedTest.first_or_create!([
+passed_tests = PassedTest.create!([
   { user_id: users[0].id, test_id: tests[0].id },
   { user_id: users[0].id, test_id: tests[1].id },
   { user_id: users[0].id, test_id: tests[2].id },
