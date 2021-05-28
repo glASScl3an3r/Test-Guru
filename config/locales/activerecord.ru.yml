@@ -6,6 +6,7 @@ ru:
       question: "Вопрос"
       test: "Тест"
       user: "Пользователь"
+
     attributes:
       answer:
         correct: "Верность"
@@ -17,12 +18,13 @@ ru:
         test: "Тест"
       test:
         title: "Название"
-        level: "Уровень"
+        level: "Сложность"
         author: "Автор"
         category: "Категория"
       user:
         name: "Имя"
+
     errors:
       messages:
-        too_many_answers: 'Количество ответов должно быть меньше или равно 4'
-        record_invalid: 'невалидная запись'
+        too_many_answers: "слишком много ответов(>4)"
+        record_invalid: "Невалидная запись"

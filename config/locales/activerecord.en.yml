@@ -2,4 +2,4 @@ en:
   activerecord:
     errors:
       messages:
-        too_many_answers: 'Answers count must be less or equal 4'
+        too_many_answers: "too many answers(> 4)"
