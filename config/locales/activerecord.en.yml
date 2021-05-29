@@ -1,0 +1,5 @@
+en:
+  activerecord:
+    errors:
+      messages:
+        too_many_answers: "too many answers(> 4)"

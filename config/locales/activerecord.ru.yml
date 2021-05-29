@@ -1,0 +1,30 @@
+ru:
+  activerecord:
+    models:
+      answer: "Ответ"
+      category: "Категория"
+      question: "Вопрос"
+      test: "Тест"
+      user: "Пользователь"
+
+    attributes:
+      answer:
+        correct: "Верность"
+        question: "Вопрос"
+      category:
+        title: "Название"
+      question:
+        text: "Текст"
+        test: "Тест"
+      test:
+        title: "Название"
+        level: "Сложность"
+        author: "Автор"
+        category: "Категория"
+      user:
+        name: "Имя"
+
+    errors:
+      messages:
+        too_many_answers: "слишком много ответов(>4)"
+        record_invalid: "Невалидная запись"
