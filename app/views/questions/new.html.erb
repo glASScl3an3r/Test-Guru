@@ -1,0 +1,12 @@
+<h1>Create question<h1>
+
+<form action="." method="POST">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+  <p>
+    <label for="question-text">Question:</label>
+    <input type="text" name="question[text]" id="question-text">
+  </p>
+
+  <input type="submit" value="Create">
+</form>

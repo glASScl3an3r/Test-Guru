@@ -1,4 +1,6 @@
 en:
+  not_implemented: 'will work in future, maybe'
+  question_created: 'question created'
   hello: 'Hello world'
   pages:
     about:
