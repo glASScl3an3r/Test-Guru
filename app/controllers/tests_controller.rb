@@ -1,7 +1,6 @@
 class TestsController < ApplicationController
 
-  before_action :find_test
-  skip_before_action :find_test, only: %i[index new]
+  before_action :find_test, except: %i[index new create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -40,7 +39,6 @@ class TestsController < ApplicationController
   private
 
   def find_test
-    puts params.inspect
     @test = Test.find(params[:id])
   end
 

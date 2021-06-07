@@ -1,8 +1,7 @@
 class QuestionsController < ApplicationController
 
-  before_action :find_test
-  before_action :find_question
-  skip_before_action :find_question, only: %i[index new destroy]
+  before_action :find_question, except: %i[index new destroy create]
+  before_action :find_test, only: %i[index new create show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -11,10 +10,19 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create(question_params)
-    question.test_id = @test.id
-    question.save!
-    render plain: 'question created!'
+    @question = @test.questions.build(question_params)
+    if @question.save
+      redirect_to controller: :questions,
+                  action: :show,
+                  id: @question,
+                  test_id: @test,
+                  notice: 'question created!'
+    else
+      redirect_to controller: :questions,
+                  action: :new,
+                  test_id: @test,
+                  alert: 'invalid params!'
+    end
   end
 
   def edit
@@ -26,14 +34,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    puts params.inspect
-  end
-
-  #Показывает вопросы не по id, а по индексу в списке вопросов конкретного теста
-  #Вопросы отсортированы по времени создания(в будущем мб поменяется)
-  #т.е. tests/1/questions/0 - первый вопрос теста c id = 1
-  def show_ordered
-    render json: { question: @question }
+    raise ActiveRecord::RecordNotFound if @question.test != @test
+    render json: @question
   end
 
   def update
@@ -41,27 +43,23 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).destroy
-  end
-
-  def destroy_ordered
     @question.destroy
   end
 
   private
 
   def question_params
+    puts params.inspect
+    params.permit(:test_id)
     params.require(:question).permit(:text)
+  end
+
+  def find_question
+    @question = Question.find(params[:id])
   end
 
   def find_test
     @test = Test.find(params[:test_id])
-  end
-
-  def find_question
-    question_num = params[:question_num].to_i
-    @question = @test.questions[question_num]
-    raise ActiveRecord::RecordNotFound if question_num < 0 || @question.nil?
   end
 
   def rescue_with_question_not_found
