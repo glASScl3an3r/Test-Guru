@@ -49,7 +49,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    puts params.inspect
     params.permit(:test_id)
     params.require(:question).permit(:text)
   end
