@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   before_action :find_question, except: %i[index new create]
-  before_action :find_test, only: %i[index new create show]
+  before_action :find_test, only: %i[index new create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -12,16 +12,9 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.build(question_params)
     if @question.save
-      redirect_to controller: :questions,
-                  action: :show,
-                  id: @question,
-                  test_id: @test,
-                  notice: 'question created!'
+      redirect_to @question
     else
-      redirect_to controller: :questions,
-                  action: :new,
-                  test_id: @test,
-                  alert: 'invalid params!'
+      render :new, alert: 'invalid params'
     end
   end
 
@@ -34,7 +27,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    raise ActiveRecord::RecordNotFound if @question.test != @test
     render json: @question
   end
 
@@ -44,12 +36,12 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
+    redirect_to '/tests'
   end
 
   private
 
   def question_params
-    params.permit(:test_id)
     params.require(:question).permit(:text)
   end
 

@@ -1,6 +1,6 @@
 <h1>Create question<h1>
 
-<form action="." method="POST">
+<form action="/tests/<%= @test.id %>/questions" method="POST">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
   <p>

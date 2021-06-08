@@ -9,11 +9,8 @@ class TestsController < ApplicationController
   end
 
   #Пока не работает, для создания все еще нужно указывать категорию
-  #В будущем будет сделано
-  #Пока при создании вылетает ошибка
   def create
-    test = Test.create!(test_params)
-    redirect_to '/tests', notice: 'test created'
+    not_implemented
   end
 
   #views/tests/new.html.erb
@@ -34,6 +31,7 @@ class TestsController < ApplicationController
 
   def destroy
     @test.destroy
+    redirect_to '/tests'
   end
 
   private
