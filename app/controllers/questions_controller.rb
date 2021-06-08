@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to @question
     else
-      render :new, alert: 'invalid params'
+      render :new
     end
   end
 
