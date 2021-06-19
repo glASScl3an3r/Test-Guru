@@ -1,4 +1,6 @@
 ru:
+  not_implemented: 'В будущем будет работать, наверное'
+  question_created: 'Вопрос создан'
   hello: 'Привет, мир'
   pages:
     about:
