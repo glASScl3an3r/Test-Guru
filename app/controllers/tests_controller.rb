@@ -5,33 +5,41 @@ class TestsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
-    render json: { tests: Test.all }
+    @tests = Test.all
   end
 
-  #Пока не работает, для создания все еще нужно указывать категорию
   def create
-    not_implemented
+    @test = Test.new(test_params)
+
+    if @test.save
+      redirect_to @test
+    else
+      render :new
+    end
   end
 
   #views/tests/new.html.erb
   def new
+    @test = Test.new
   end
 
   def edit
-    not_implemented
   end
 
   def show
-    render json: { test: @test }
   end
 
   def update
-    not_implemented
+    if @test.update(test_params)
+      redirect_to @test
+    else
+      render :edit
+    end
   end
 
   def destroy
     @test.destroy
-    redirect_to '/tests'
+    redirect_to tests_path
   end
 
   private
@@ -41,7 +49,7 @@ class TestsController < ApplicationController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level)
+    params.require(:test).permit(:title, :level, :category_id, :author_id)
   end
 
   def rescue_with_test_not_found

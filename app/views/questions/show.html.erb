@@ -1,0 +1,11 @@
+<h1>Test <%= @question.test.title %>: Question</h1>
+
+<p>
+  <strong>Text:</strong>
+  <%= @question.text %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_question_path(@question) %> |
+  <%= link_to 'Back', test_path(@question.test) %>
+</p>
