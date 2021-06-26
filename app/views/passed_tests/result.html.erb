@@ -1,0 +1,15 @@
+<h1>Test completed!</h1>
+
+<% if @passed_test.passed? %>
+  <p>Well done! You have
+    <b style="color:green"><%= @passed_test.pass_percent %>%</b>
+    score!
+  </p>
+<% else %>
+  <p>Unlucky!
+    <b style="color:red"><%= @passed_test.pass_percent %>%</b>
+    - is that all you can?
+  </p>
+<% end %>
+
+<%= link_to 'Back', tests_path %>
