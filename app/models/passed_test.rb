@@ -38,7 +38,7 @@ class PassedTest < ApplicationRecord
     self.current_question = test.questions.first if test.present?
   end
 
-  def answer_correct?(answer_ids=[])
+  def answer_correct?(answer_ids)
     correct_answers.ids.sort == answer_ids&.map(&:to_i)&.sort
   end
 
