@@ -1,8 +1,15 @@
 <h1>Test <%= @question.test.title %>: Question</h1>
 
 <p>
-  <strong>Text:</strong>
   <%= @question.text %>
+</p>
+
+<p>
+  <strong>Answers:</strong>
+  <%= link_to 'New answer', new_question_answer_path(@question) %>
+  <ol>
+    <%= render @question.answers %>
+  </ol>
 </p>
 
 <p>
