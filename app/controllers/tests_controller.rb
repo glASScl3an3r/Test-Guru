@@ -54,10 +54,8 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
-  #!!!!!!!!!!!!!!
-  #TODO: поменять, когда будет аутентификация
   def find_user
-    @user = User.first
+    @user = current_user
   end
 
   def test_params

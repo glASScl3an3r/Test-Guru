@@ -11,7 +11,10 @@
   </head>
 
   <body>
+    <%= render 'shared/header' %>
+    <%= flash_msg(:alert) %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+    <%= flash_msg(:notice) %>
+    <%= render 'shared/footer', notice: :abobas %>
   </body>
 </html>
