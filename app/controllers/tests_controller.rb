@@ -1,7 +1,6 @@
 class TestsController < ApplicationController
 
   before_action :find_test, only: %i[show destroy edit update start]
-  before_action :find_user, only: %i[start]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -44,18 +43,14 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test)
-    redirect_to @user.passed_test(@test)
+    current_user.tests.push(@test)
+    redirect_to current_user.passed_test(@test)
   end
 
   private
 
   def find_test
     @test = Test.find(params[:id])
-  end
-
-  def find_user
-    @user = current_user
   end
 
   def test_params
@@ -65,4 +60,5 @@ class TestsController < ApplicationController
   def rescue_with_test_not_found
     render plain: 'test was not found'
   end
+
 end
