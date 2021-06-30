@@ -6,10 +6,10 @@ categories = Category.create!([
 ])
 
 users = User.create!([
-  { name: 'Иван Владимирович' },
-  { name: 'Владимир Иванович' },
-  { name: "d'Amir" },
-  { name: "' UNION SELECT * FROM users -- " }
+  { name: 'Иван Владимирович', email: 'aboba@mail.ru', password: '123456' },
+  { name: 'Владимир Иванович', email: 'vla1337@bk.ru', password: 'dajadsjkdada' },
+  { name: "d'Amir", email: 'leperdole@yandex.ru', password: 'abobaboba' },
+  { name: "' UNION SELECT * FROM users -- ", email: 'kekwkekw@mail.ru', password: 'razrazraz' }
 ])
 
 tests = Test.create!([

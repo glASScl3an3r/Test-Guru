@@ -1,9 +1,24 @@
 class ApplicationController < ActionController::Base
 
-  protected
+  before_action :authenticate_user!
 
-  def not_implemented
-    render plain: I18n.t(:not_implemented)
+  helper_method :current_user, :logged_in?
+
+  private
+
+  def authenticate_user!
+    unless current_user
+      cookies[:before_login_path] = request.env['PATH_INFO']
+      redirect_to login_path
+    end
+  end
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in?
+    current_user.present?
   end
 
 end

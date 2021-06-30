@@ -1,7 +1,6 @@
 class TestsController < ApplicationController
 
   before_action :find_test, only: %i[show destroy edit update start]
-  before_action :find_user, only: %i[start]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -10,7 +9,7 @@ class TestsController < ApplicationController
   end
 
   def create
-    @test = Test.new(test_params)
+    @test = current_user.created_tests.new(test_params)
 
     if @test.save
       redirect_to @test
@@ -44,8 +43,8 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user.tests.push(@test)
-    redirect_to @user.passed_test(@test)
+    current_user.tests.push(@test)
+    redirect_to current_user.passed_test(@test)
   end
 
   private
@@ -54,17 +53,12 @@ class TestsController < ApplicationController
     @test = Test.find(params[:id])
   end
 
-  #!!!!!!!!!!!!!!
-  #TODO: поменять, когда будет аутентификация
-  def find_user
-    @user = User.first
-  end
-
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :author_id)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 
   def rescue_with_test_not_found
     render plain: 'test was not found'
   end
+
 end
