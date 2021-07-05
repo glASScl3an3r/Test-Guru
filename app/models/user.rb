@@ -1,11 +1,19 @@
 class User < ApplicationRecord
+
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :confirmable
+
   has_many :passed_tests, dependent: :destroy
   has_many :tests, through: :passed_tests
   has_many :created_tests, class_name: 'Test', foreign_key: :author_id, dependent: :destroy
 
-  has_secure_password
-
-  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :email, presence: true,
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: true

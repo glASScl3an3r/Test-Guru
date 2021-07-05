@@ -1,0 +1,29 @@
+<h1><%= @test.title %></h1>
+
+<p>
+  <strong>Category: </strong>
+  <%= @test.category.title %><br>
+  <strong>Level: </strong>
+  <%= test_difficulty(@test) %><br>
+  <strong>Author: </strong>
+  <%= @test.author.email %>
+</p>
+
+<p>
+  <strong>Questions:</strong>
+  <%= link_to 'New question', new_admin_test_question_path(@test) %>
+
+  <table>
+    <tr>
+      <td>Text</td>
+      <td colspan="3">Actions</td>
+    </tr>
+
+    <%= render @test.questions %>
+  </table>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_admin_test_path(@test) %> |
+  <%= link_to 'Back', admin_tests_path %>
+</p>

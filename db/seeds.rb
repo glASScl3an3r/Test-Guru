@@ -6,11 +6,17 @@ categories = Category.create!([
 ])
 
 users = User.create!([
-  { name: 'Иван Владимирович', email: 'aboba@mail.ru', password: '123456' },
-  { name: 'Владимир Иванович', email: 'vla1337@bk.ru', password: 'dajadsjkdada' },
-  { name: "d'Amir", email: 'leperdole@yandex.ru', password: 'abobaboba' },
-  { name: "' UNION SELECT * FROM users -- ", email: 'kekwkekw@mail.ru', password: 'razrazraz' }
+  { first_name: 'Иван',     last_name: 'Урядов',   email: 'aboba@mail.ru',       password: '123456' },
+  { first_name: 'Владимир', last_name: 'Гладской', email: 'vla1337@bk.ru',       password: 'abobada' },
+  { first_name: 'Igor',     last_name: 'Pigor',    email: 'leperdole@yandex.ru', password: 'abobaboba'},
+  { first_name: 'Deniska',  last_name: 'Detrov',   email: 'kekwkekw@mail.ru',    password: 'razrazraz' }
 ])
+users.each { |user| user.confirm }
+
+admins = Admin.create!([
+  { first_name: 'Boss', last_name: 'Of this gym', email: 'vl_gladskoy@mail.ru', password: 'adminadmin' }
+])
+admins.each { |admin| admin.confirm }
 
 tests = Test.create!([
   { title: '20й век в истории россии', category: categories[3], author: users[0] },
