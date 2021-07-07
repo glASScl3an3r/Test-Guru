@@ -1,5 +1,13 @@
 class GistQuestionService
 
+  Result = Struct.new(:status_code, :url) do
+
+    def success?
+      status_code.to_i == 201 #created 201
+    end
+
+  end
+
   def initialize(question, client: nil)
     @question = question
     @test = @question.test
@@ -8,7 +16,7 @@ class GistQuestionService
 
   def call
     res = @client.create_gist(gist_params)
-    { success: @client.last_response.status, url: res.html_url }
+    Result.new(@client.last_response.status, res.html_url)
   end
 
   private
