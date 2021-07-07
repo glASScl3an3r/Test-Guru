@@ -2,11 +2,11 @@
 
 <table>
   <tr>
-    <td>Question</td>
+    <td><%= I18n.t('activerecord.models.question') %></td>
     <td>URL</td>
-    <td>User</td>
+    <td><%= I18n.t('activerecord.models.user') %></td>
   </tr>
   <%= render @gists %>
 </table>
 
-<p><%= link_to 'Back', admin_tests_path %></p>
+<p><%= link_to I18n.t('buttons.back'), admin_tests_path %></p>
