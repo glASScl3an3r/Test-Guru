@@ -1,0 +1,5 @@
+<tr>
+  <td><%= gist.question.text[0..24] %></td>
+  <td><%= link_to gist.url.split("/")[-1], gist.url, target: :_blank, rel: :nofollow %></td>
+  <td><%= gist.user.email %></td>
+</tr>
