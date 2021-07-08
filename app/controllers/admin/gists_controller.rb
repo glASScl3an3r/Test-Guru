@@ -1,7 +1,9 @@
-class Admin::GistsController < Admin::BaseController
+# frozen_string_literal: true
 
-  def index
-    @gists = Gist.all
+module Admin
+  class GistsController < Admin::BaseController
+    def index
+      @gists = Gist.all
+    end
   end
-
 end

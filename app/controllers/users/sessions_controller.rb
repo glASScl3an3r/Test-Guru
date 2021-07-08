@@ -1,8 +1,10 @@
-class Users::SessionsController < Devise::SessionsController
+# frozen_string_literal: true
 
-  def create
-    super
-    flash[:notice] = "Привет, #{current_user.first_name}!"
+module Users
+  class SessionsController < Devise::SessionsController
+    def create
+      super
+      flash[:notice] = "Привет, #{current_user.first_name}!"
+    end
   end
-
 end

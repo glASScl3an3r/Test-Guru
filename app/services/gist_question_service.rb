@@ -1,11 +1,10 @@
+# frozen_string_literal: true
+
 class GistQuestionService
-
   Result = Struct.new(:status_code, :url) do
-
     def success?
-      status_code.to_i == 201 #created 201
+      status_code.to_i == 201 # created 201
     end
-
   end
 
   def initialize(question, client: nil)
@@ -35,5 +34,4 @@ class GistQuestionService
   def gist_content
     [@question.text, *@question.answers.pluck(:text)].join("\n")
   end
-
 end

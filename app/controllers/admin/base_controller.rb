@@ -1,11 +1,13 @@
-class Admin::BaseController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :admin_required!
+module Admin
+  class BaseController < ApplicationController
+    before_action :admin_required!
 
-  private
+    private
 
-  def admin_required!
-    redirect_to root_path, alert: 'Access denied to view this page.' unless current_user.is_a?(Admin)
+    def admin_required!
+      redirect_to root_path, alert: 'Access denied to view this page.' unless current_user.is_a?(Admin)
+    end
   end
-
 end
