@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <%= link_to truncate(gist.question.text, length: 25), 
+                  admin_question_path(gist.question) %>
+  </td>
+  <td><%= link_to gist.url.split("/")[-1], gist.url, target: :_blank, rel: :nofollow %></td>
+  <td><%= gist.user.email %></td>
+</tr>

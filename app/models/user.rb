@@ -1,5 +1,6 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
 
+class User < ApplicationRecord
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -10,7 +11,10 @@ class User < ApplicationRecord
 
   has_many :passed_tests, dependent: :destroy
   has_many :tests, through: :passed_tests
-  has_many :created_tests, class_name: 'Test', foreign_key: :author_id, dependent: :destroy
+  has_many :created_tests, class_name: 'Test',
+                           foreign_key: :author_id,
+                           dependent: :destroy
+  has_many :gists, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

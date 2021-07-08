@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   end
 
   resources :passed_tests, only: %i[show update] do
-    member { get :result }
+    member do
+      get :result
+    end
   end
+
+  resources :gists, only: :create
 
   namespace :admin do
     resources :tests do
@@ -21,6 +25,8 @@ Rails.application.routes.draw do
         resources :answers, shallow: true, except: :index
       end
     end
+
+    resources :gists, only: :index
   end
 
 end

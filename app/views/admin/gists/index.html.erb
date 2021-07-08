@@ -1,0 +1,12 @@
+<p>Gists</p>
+
+<table>
+  <tr>
+    <td><%= I18n.t('activerecord.models.question') %></td>
+    <td>URL</td>
+    <td><%= I18n.t('activerecord.models.user') %></td>
+  </tr>
+  <%= render @gists %>
+</table>
+
+<p><%= link_to I18n.t('buttons.back'), admin_tests_path %></p>

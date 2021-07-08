@@ -20,5 +20,7 @@
       <%= b.label %>
     </p>
   <% end %>
-  <%= form.submit 'Next' %>
+
+  <p><%= link_to 'Gist question', gists_path(passed_test_id: @passed_test.id), method: :post %></P>
+  <p><%= form.submit 'Next' %></p>
 <% end %>

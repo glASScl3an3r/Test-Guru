@@ -1,4 +1,13 @@
 ru:
+  gists:
+    create:
+      success: 'Создан новый gist: %{url}'
+      fail: 'В процессе создания gist произошла ошибка'
+  services:
+    gist_question_service:
+      description: 'Вопрос из теста: %{test_title}'
+  buttons:
+    back: 'Назад'
   not_implemented: 'В будущем будет работать, наверное'
   question_created: 'Вопрос создан'
   hello: 'Привет, мир'

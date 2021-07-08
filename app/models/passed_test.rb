@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PassedTest < ApplicationRecord
   belongs_to :user
   belongs_to :test
@@ -8,9 +10,7 @@ class PassedTest < ApplicationRecord
   SUCCESS_PERCENT = 85
 
   def accept!(answer_ids)
-    if answer_correct?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if answer_correct?(answer_ids)
 
     self.current_question = next_question
     save!

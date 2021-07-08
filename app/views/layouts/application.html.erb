@@ -12,9 +12,8 @@
 
   <body>
     <%= render 'shared/header' %>
-    <%= flash_msg(:alert) %>
+    <%= render 'shared/flash' %>
     <%= yield %>
-    <%= flash_msg(:notice) %>
     <%= render 'shared/footer' %>
   </body>
 </html>
