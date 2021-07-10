@@ -12,18 +12,24 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="field" id="password">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
+
+    <%= octicon 'blocked', class: 'hide' %>
+    <%= octicon 'check', class: 'hide' %>
   </div>
 
-  <div class="field">
+  <div class="field" id="passwordConfirm">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+    <%= octicon 'blocked', class: 'hide' %>
+    <%= octicon 'check', class: 'hide' %>
   </div>
 
   <div class="field">
