@@ -2,12 +2,12 @@
 
 <p><%= link_to 'New test', new_admin_test_path %></p>
 
-<table class="table">
+<table class="table" id="TestsTable">
   <tr>
-    <th class="sort-by-title pointer">
+    <th class="sort-by pointer">
       Title
-      <%= octicon 'arrow-up',   class: 'text-success hide' %>
-      <%= octicon 'arrow-down', class: 'text-success hide' %>
+      <%= octicon 'arrow-up',   class: 'hide' %>
+      <%= octicon 'arrow-down', class: 'hide' %>
     </th>
     <th>Level</th>
     <th>Questions count<th>
