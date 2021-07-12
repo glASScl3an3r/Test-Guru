@@ -36,13 +36,15 @@ questions = Question.create!([
   { text: 'question1 test3', test: tests[3] },
   { text: 'question2 test3', test: tests[3] },
   { text: 'question1 test4', test: tests[4] },
-  { text: 'question2 test4', test: tests[4] }
+  { text: 'question2 test4', test: tests[4] },
+  { text: 'question3 test4', test: tests[4] },
+  { text: 'question4 test4', test: tests[4] }
 ])
 
 answers = Answer.create!([
   { text: 'там', question: questions[0], correct: true },
-  { text: 'не там', question: questions[0], },
-  { text: 'вооон там', question: questions[0], },
+  { text: 'не там', question: questions[0] },
+  { text: 'вооон там', question: questions[0] },
   { text: 'тогда', question: questions[1], correct: true },
   { text: 'не тогда', question: questions[1] },
   { text: 'answer1 q2', question: questions[2], correct: true },
@@ -61,6 +63,10 @@ answers = Answer.create!([
   { text: 'answer2 q8', question: questions[8] },
   { text: 'answer1 q9', question: questions[9], correct: true },
   { text: 'answer2 q9', question: questions[9] },
+  { text: 'answer1 q10', question: questions[10], correct: true },
+  { text: 'answer2 q10', question: questions[10] },
+  { text: 'answer1 q11', question: questions[11], correct: true },
+  { text: 'answer2 q11', question: questions[11] }
 ])
 
 passed_tests = PassedTest.create!([

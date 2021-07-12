@@ -1,5 +1,14 @@
 <h1>Passing test <%= @passed_test.test.title %></h1>
 
+<!-- https://www.w3schools.com/howto/howto_js_progressbar.asp -->
+<div class="progress">
+  <%= content_tag :div, id: 'passProgress',
+                      class: 'bar',
+                      data: { progress_percent: @passed_test.progress_percent } do %>
+    <%= @passed_test.progress_percent %>%
+  <% end %>
+</div>
+
 <p>
   question #<%= @passed_test.question_number %>
   of <%= @passed_test.test.questions.count %>
