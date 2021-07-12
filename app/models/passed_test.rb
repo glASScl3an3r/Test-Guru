@@ -20,8 +20,14 @@ class PassedTest < ApplicationRecord
     current_question.nil?
   end
 
+  #процент верно отвеченных
   def pass_percent
     (correct_questions.to_f / test.questions.count * 100).to_i
+  end
+
+  #процент пройденных вопросов
+  def progress_percent
+    (((question_number - 1).to_f / test.questions.count) * 100).to_i
   end
 
   def passed?
