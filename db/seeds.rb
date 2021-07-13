@@ -19,11 +19,11 @@ admins = Admin.create!([
 admins.each { |admin| admin.confirm }
 
 tests = Test.create!([
-  { title: '20й век в истории россии', category: categories[3], author: users[0] },
+  { title: '20й век в истории россии', category: categories[3], author: users[0], timer: 3 * 60 },
   { title: 'sql injections', category: categories[0], author: users[3] },
   { title: 'x86 buffer overflow', category: categories[0], author: users[0] },
   { title: 'x86 rop chains', category: categories[0], author: users[1] },
-  { title: 'wewe', category: categories[0], author: users[2] }
+  { title: 'wewe', category: categories[0], author: users[2], timer: 60 }
 ])
 
 questions = Question.create!([
