@@ -11,6 +11,7 @@ import TableSorter from 'utilities/table_sorter'
 import PasswordChecker from 'utilities/password_checker'
 import FormInline from 'utilities/form_inline'
 import ProgressBar from 'utilities/progress_bar'
+import Timer from 'utilities/timer'
 
 Rails.start()
 Turbolinks.start()
@@ -22,4 +23,6 @@ document.addEventListener('turbolinks:load', function() {
 
   FormInline.setEventHandlersToLinks()
   ProgressBar.setProgressTo("passProgress")
+
+  Timer.setRedirectTimerTo("testTimer")
 })

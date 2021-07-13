@@ -1,10 +1,15 @@
 <h1>Tests</h1>
 
-<table>
+<table class="table" id="TestsTable">
   <tr>
-    <th>Title</th>
+    <th class="sort-by pointer">
+      Title
+      <%= octicon 'arrow-up',   class: 'hide' %>
+      <%= octicon 'arrow-down', class: 'hide' %>
+    </th>
     <th>Level</th>
-    <th>Questions count<th>
+    <th>Questions<th>
+    <th>Time</th>
     <th>Actions</th>
   </tr>
 

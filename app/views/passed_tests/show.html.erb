@@ -9,6 +9,11 @@
   <% end %>
 </div>
 
+<%= content_tag :div, id: 'testTimer',
+                      data: { end_time: @passed_test.end_time.httpdate,
+                              link_to_redirect: result_passed_test_path } do %>
+<% end %>
+
 <p>
   question #<%= @passed_test.question_number %>
   of <%= @passed_test.test.questions.count %>
