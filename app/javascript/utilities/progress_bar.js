@@ -4,7 +4,6 @@ class ProgressBar {
     if (!progressBar) return
 
     const progressPercent = progressBar.dataset.progressPercent
-    console.log(progressBar)
     progressBar.style.width = `${progressPercent}%`
   }
 }

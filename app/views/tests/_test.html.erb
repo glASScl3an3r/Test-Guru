@@ -2,5 +2,6 @@
   <td><%= test.title %></td>
   <td><%= test_difficulty(test) %></td>
   <td><%= test.questions.count %></td>
+  <td><%= test.timer_minutes %></td>
   <td><%= button_to 'Start', start_test_path(test) %></td>
 </tr>

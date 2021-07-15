@@ -10,6 +10,12 @@ class PassedTest < ApplicationRecord
   SUCCESS_PERCENT = 85
 
   def accept!(answer_ids)
+    if time_over?
+      self.current_question = nil
+      save!
+      return
+    end
+
     self.correct_questions += 1 if answer_correct?(answer_ids)
 
     self.current_question = next_question
@@ -27,6 +33,7 @@ class PassedTest < ApplicationRecord
 
   #процент пройденных вопросов
   def progress_percent
+    return 100 if completed?
     (((question_number - 1).to_f / test.questions.count) * 100).to_i
   end
 
@@ -34,8 +41,24 @@ class PassedTest < ApplicationRecord
     pass_percent > SUCCESS_PERCENT
   end
 
+  def start_time
+    created_at
+  end
+
+  def end_time
+    start_time + test.timer.seconds
+  end
+
+  def seconds_left
+    (end_time - Time.current).to_i
+  end
+
+  def time_over?
+    seconds_left <= 0
+  end
+
   def question_number
-    test.questions.order(:id).where('id <= ?', current_question.id).count
+    test.questions.order(:id).where('id <= ?', current_question.id).count unless current_question.nil?
   end
 
   private

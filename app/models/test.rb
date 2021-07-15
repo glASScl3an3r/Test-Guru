@@ -16,6 +16,8 @@ class Test < ApplicationRecord
   validates :level, presence: true,
                     numericality: { only_integer: true,
                                     greater_than_or_equal_to: 0 }
+  validates :timer, numericality: { only_integer: true,
+                                    greater_than: 0 }
 
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
@@ -30,5 +32,9 @@ class Test < ApplicationRecord
     by_category(category)
       .order(title: :desc)
       .pluck(:title)
+  end
+
+  def timer_minutes
+    (timer / 60).to_i
   end
 end

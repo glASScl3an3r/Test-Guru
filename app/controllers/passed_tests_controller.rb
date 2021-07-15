@@ -3,7 +3,9 @@
 class PassedTestsController < ApplicationController
   before_action :find_passed_test, only: %i[show result update]
 
-  def show; end
+  def show
+    redirect_to result_passed_test_path(@passed_test) if @passed_test.completed?
+  end
 
   def result; end
 
