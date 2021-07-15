@@ -23,7 +23,7 @@ tests = Test.create!([
   { title: 'sql injections', category: categories[0], author: users[3] },
   { title: 'x86 buffer overflow', category: categories[0], author: users[0] },
   { title: 'x86 rop chains', category: categories[0], author: users[1] },
-  { title: 'wewe', category: categories[0], author: users[2], timer: 60 }
+  { title: 'wewe', category: categories[0], author: users[2], timer: 7 }
 ])
 
 questions = Question.create!([

@@ -33,6 +33,7 @@ class PassedTest < ApplicationRecord
 
   #процент пройденных вопросов
   def progress_percent
+    return 100 if completed?
     (((question_number - 1).to_f / test.questions.count) * 100).to_i
   end
 
@@ -57,7 +58,7 @@ class PassedTest < ApplicationRecord
   end
 
   def question_number
-    test.questions.order(:id).where('id <= ?', current_question.id).count
+    test.questions.order(:id).where('id <= ?', current_question.id).count unless current_question.nil?
   end
 
   private

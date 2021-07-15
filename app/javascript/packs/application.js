@@ -24,5 +24,5 @@ document.addEventListener('turbolinks:load', function() {
   FormInline.setEventHandlersToLinks()
   ProgressBar.setProgressTo("passProgress")
 
-  Timer.setRedirectTimerTo("testTimer")
+  Timer.setSubmitTimerTo("testTimer", "answersForm")
 })

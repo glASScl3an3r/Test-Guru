@@ -1,11 +1,13 @@
 class Timer {
-  static setRedirectTimerTo(elementId) {
+  static setSubmitTimerTo(elementId, submitFormId) {
     const element = document.getElementById(elementId)
-    if (!element) return
+    const formToSubmit = document.getElementById(submitFormId)
+    if (!element || !formToSubmit) return
 
-    const linkToRedirect = element.dataset.linkToRedirect
     const endTime = new Date(element.dataset.endTime)
     const time = endTime - Date.now()
+
+    if (!endTime || !time) return
 
     let timer = setInterval(() => {
       const timeLeft = endTime - Date.now()
@@ -16,7 +18,7 @@ class Timer {
     setTimeout(() => {
       clearInterval(timer)
       alert('Time is gone')
-      window.location.href = linkToRedirect
+      formToSubmit.submit()
     }, time)
   }
 
