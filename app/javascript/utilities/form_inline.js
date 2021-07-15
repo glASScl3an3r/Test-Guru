@@ -31,6 +31,8 @@ class FormInline {
     const title = document.querySelector(`.test-title[data-test-id="${this.testId}"]`)
     const formInline = document.querySelector(`.form-inline[data-test-id="${this.testId}"]`)
 
+    if (!formInline || !link || !title) return
+
     if (formInline.classList.contains('hide')) {
       formInline.classList.remove('hide')
       title.classList.add('hide')
