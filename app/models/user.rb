@@ -15,6 +15,7 @@ class User < ApplicationRecord
                            foreign_key: :author_id,
                            dependent: :destroy
   has_many :gists, dependent: :destroy
+  has_and_belongs_to_many :badges
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -28,5 +29,9 @@ class User < ApplicationRecord
 
   def passed_test(test)
     passed_tests.order(id: :desc).find_by(test_id: test.id)
+  end
+
+  def has_already?(badge)
+    badges.find_by(id: badge.id).present?
   end
 end

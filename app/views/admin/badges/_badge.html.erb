@@ -1,0 +1,10 @@
+<tr>
+  <td><%= image_tag("badges/#{badge.image_name}", width: '50px') %></td>
+  <td><%= badge.title %></td>
+  <td><%= badge.description %></td>
+  <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
+  <td><%= link_to 'Delete', admin_badge_path(badge),
+                            method: :delete,
+                            data: { confirm: 'Are you sure about that?' } %>
+  </td>
+</tr>

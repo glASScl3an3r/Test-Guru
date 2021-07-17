@@ -6,6 +6,11 @@ class PassedTest < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_first_question, on: :create
+  before_save :before_save_set_solved_param
+
+  scope :solved, -> { where(solved: true) }
+  scope :by_level, -> (level) { joins(:test).where(tests: { level: level }) }
+  scope :without_repetitions, -> { select(:test_id).distinct }
 
   SUCCESS_PERCENT = 85
 
@@ -65,6 +70,10 @@ class PassedTest < ApplicationRecord
 
   def before_validation_set_first_question
     self.current_question = test.questions.first if test.present?
+  end
+
+  def before_save_set_solved_param
+    self.solved = passed?
   end
 
   def answer_correct?(answer_ids)
