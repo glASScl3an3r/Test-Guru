@@ -5,6 +5,17 @@ categories = Category.create!([
   { title: 'история россии' }
 ])
 
+badges = Badge.create!([
+  { title: 'Восхождение нового Гуру', description: 'Пройти первый тест',
+    image_name: 'first_blood.png', rule: 'first_test' },
+  { title: 'Гений мысли', description: 'Пройти тест на 0%',
+    image_name: 'retard.png', rule: 'full_failed_test' },
+  { title: 'Он смог', description: 'Пройти тест на 100%',
+    image_name: 'hundred_percent.png', rule: 'full_passed_test' },
+  { title: 'На изичах', description: 'Пройти все тесты уровня easy',
+    image_name: 'easy_for_papa.jpg', rule: 'easy_tests', rule_value: 0 }
+])
+
 users = User.create!([
   { first_name: 'Иван',     last_name: 'Урядов',   email: 'aboba@mail.ru',       password: '123456' },
   { first_name: 'Владимир', last_name: 'Гладской', email: 'vla1337@bk.ru',       password: 'abobada' },
@@ -19,11 +30,13 @@ admins = Admin.create!([
 admins.each { |admin| admin.confirm }
 
 tests = Test.create!([
-  { title: '20й век в истории россии', category: categories[3], author: users[0], timer: 3 * 60 },
+  { title: '20й век в истории россии', category: categories[3],
+    author: users[0], timer: 3 * 60, level: 2 },
   { title: 'sql injections', category: categories[0], author: users[3] },
   { title: 'x86 buffer overflow', category: categories[0], author: users[0] },
   { title: 'x86 rop chains', category: categories[0], author: users[1] },
-  { title: 'wewe', category: categories[0], author: users[2], timer: 7 }
+  { title: 'wewe', category: categories[0],
+    author: users[2], timer: 7, level: 5 }
 ])
 
 questions = Question.create!([
@@ -67,13 +80,4 @@ answers = Answer.create!([
   { text: 'answer2 q10', question: questions[10] },
   { text: 'answer1 q11', question: questions[11], correct: true },
   { text: 'answer2 q11', question: questions[11] }
-])
-
-passed_tests = PassedTest.create!([
-  { user: users[0], test: tests[0] },
-  { user: users[0], test: tests[1] },
-  { user: users[0], test: tests[2] },
-  { user: users[0], test: tests[3] },
-  { user: users[1], test: tests[0] },
-  { user: users[2] , test: tests[1] }
 ])
