@@ -13,12 +13,12 @@
 
   <p>
     <%= form.label :image_name %>
-    <%= form.text_field :image_name %>
+    <%= form.select :image_name, Badge.available_images, prompt: true %>
   </p>
 
   <p>
     <%= form.label :rule %>
-    <%= form.text_field :rule %>
+    <%= form.select :rule, Badge.available_rules, prompt: true %>
   </p>
 
   <p>
